@@ -57,32 +57,33 @@ class PhotoApp:
 					self.stopEvent.set()
 					self.vs.stop()
 					self.panel.destroy()
-					label_0 = tki.Label(self.root, text="Decode Data", width=20, font=("bold", 12))
-					label_0.place(x=80, y=20)
+					label_1 = tki.Label(self.root, text="Decode Data", width=20, font=("bold", 12))
+					label_1.place(x=80, y=20)
 					# Create text widget and specify size. 
 					T = tki.Text(self.root, height =10,width=40, bg="lightgray")     
 					T.pack() 
 					T.insert("2.0", "Type:"+ self.barcodes[0].type + "\n") 
 					T.insert("2.0", "Data:"+self.barcodeData) 
-					T.place(x=40, y=90)				
-				# OpenCV represents images in BGR order; however PIL
-				# represents images in RGB order, so we need to swap
-				# the channels, then convert to PIL and ImageTk format
-				image = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
-				# img_ref = image.copy()
-				image = cv2.rectangle(image, (20,20), (280,240), (0,255,0), 1)
-				image = Image.fromarray(image)
-				image = ImageTk.PhotoImage(image)
-						
-				# if the panel is not None, we need to initialize it
-				if self.panel is None:
-					self.panel = tki.Label(image=image)
-					self.panel.image = image
-					self.panel.pack(side="left", padx=50, pady=30)		
-				# otherwise, simply update the panel
+					T.place(x=40, y=90)
 				else:
-					self.panel.configure(image=image)
-					self.panel.image = image
+					# OpenCV represents images in BGR order; however PIL
+					# represents images in RGB order, so we need to swap
+					# the channels, then convert to PIL and ImageTk format
+					image = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
+					# img_ref = image.copy()
+					image = cv2.rectangle(image, (20,20), (280,240), (0,255,0), 1)
+					image = Image.fromarray(image)
+					image = ImageTk.PhotoImage(image)
+							
+					# if the panel is not None, we need to initialize it
+					if self.panel is None:
+						self.panel = tki.Label(image=image)
+						self.panel.image = image
+						self.panel.pack(side="left", padx=50, pady=30)		
+					# otherwise, simply update the panel
+					else:
+						self.panel.configure(image=image)
+						self.panel.image = image
 		except Exception as e :
 			print("[INFO] caught a RuntimeError",e)
 	
