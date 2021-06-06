@@ -11,7 +11,7 @@ $ python3 qr_read.py<br>
 
 <h3>Screenshots: </h3>
 <p align="left">
- <img src="Images/screenshot_1.png"></img>
- <img src="Images/screenshot_2.png"></img><br>
+ <img src="images/screenshot_1.png"></img>
+ <img src="images/screenshot_2.png"></img><br>
  Fig:1 Scanning and Decoding Window:<br>
 </p>
