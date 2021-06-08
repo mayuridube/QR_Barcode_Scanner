@@ -2,6 +2,7 @@
 from PIL import ImageTk
 from PIL import Image
 import tkinter as tki
+from tkinter import messagebox as mb
 import threading
 import imutils
 import cv2
@@ -38,6 +39,9 @@ class PhotoApp:
 		# set a callback to handle when the window is closed
 		self.root.wm_title("QR scanner")
 		self.root.wm_protocol("WM_DELETE_WINDOW", self.onClose)
+
+	def warning_message(self, header, message):
+		mb.showwarning(header, message)
 
 	def videoLoop(self):
 		try:
@@ -86,6 +90,10 @@ class PhotoApp:
 						self.panel.image = image
 		except Exception as e :
 			print("[INFO] caught a RuntimeError",e)
+			self.warning_message("Warning","camera not connected!!")
+			self.stopEvent.set()
+			self.vs.stop()
+			self.root.quit()
 	
 	def onClose(self):
 		# set the stop event, cleanup the camera, and allow the rest of
