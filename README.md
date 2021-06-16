@@ -1,4 +1,4 @@
-# QR And barcode scanner
+# QR And Barcode Scanner
 
 <h3>Installation</h3><br>
 $ sudo apt-get install python3-tk<br>
